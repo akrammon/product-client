@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
+import ProductTable from './js/components/ProductTable';
+
 import './App.css';
 
 class App extends Component {
@@ -19,11 +21,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.products.map((product) => (
-          <div>
-            Name: {product.name}
-          </div>
-        ))}
+        <header>Product Demo Client</header>
+        <ProductTable products={this.state.products}></ProductTable>
       </div>
     );
   }
