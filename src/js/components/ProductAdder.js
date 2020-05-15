@@ -8,6 +8,7 @@ class ProductAdder extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            addingProduct: false,
             productCode: null,
             category: null,
             name: null,
@@ -17,8 +18,14 @@ class ProductAdder extends Component {
     }
 
     render() {
-        return (
-            <div>
+        if(!this.state.addingProduct) {
+            return(
+                <Grid container justify='center'>
+                    <Button color='primary' variant='outlined' size='large' onClick={ this.onClickAddProductHandler }>Add New Product</Button>
+                </Grid>
+            )
+        } else {
+            return(
                 <Grid container direction="column">
                     <Grid container direction="row">
                         <Grid item>
@@ -46,8 +53,15 @@ class ProductAdder extends Component {
                         </Grid>
                     </Grid>  
                 </Grid>
-            </div>
-        );
+            );
+
+        }
+    }
+
+    onClickAddProductHandler = () => {
+        this.setState({
+            addingProduct: true
+        });
     }
 
     onClickSaveHandler = () => {
@@ -68,8 +82,9 @@ class ProductAdder extends Component {
         })
         .then(resp => resp.json())
         .then(response => {
-            //this.props.saveCallback(response);
+            this.props.saveCallback(response);
             this.setState({
+                addingProduct: false,
                 productCode: null,
                 category: null,
                 name: null,
@@ -80,6 +95,7 @@ class ProductAdder extends Component {
         .catch(err => {
             console.log("There was an error while saving product:" + err);
             this.setState({
+                addingProduct: false,
                 productCode: null,
                 category: null,
                 name: null,
@@ -91,6 +107,7 @@ class ProductAdder extends Component {
 
     onClickCancelHandler = () => {
         this.setState({
+            addingProduct: false,
             productCode: null,
             category: null,
             name: null,

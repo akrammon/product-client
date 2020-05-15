@@ -20,7 +20,7 @@ class App extends Component {
       <div className="App">
         <header>Product Demo Client</header>
         <ProductTable products={this.state.products}></ProductTable>
-        <ProductAdder></ProductAdder>
+        <ProductAdder saveCallback = { this.productAddCallback }></ProductAdder>
       </div>
     );
   }
@@ -31,6 +31,12 @@ class App extends Component {
     .then((data) => {
       this.setState({products: data})
     });
+  }
+
+  productAddCallback = (product) => {
+    this.setState({
+      products: this.state.products.concat(product)
+    })
   }
 
 }
