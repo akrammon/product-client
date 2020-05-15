@@ -4,6 +4,7 @@ import ProductTable from './js/components/ProductTable';
 
 import './App.css';
 import ProductAdder from './js/components/ProductAdder';
+import { Grid, Typography } from '@material-ui/core';
 
 class App extends Component {
 
@@ -18,9 +19,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>Product Demo Client</header>
-        <ProductTable products={this.state.products}></ProductTable>
-        <ProductAdder saveCallback = { this.productAddCallback }></ProductAdder>
+        <Grid container justify='center' direction='column' spacing={3}>
+          <Grid item>
+            <Typography variant='h2' gutterBottom>Product Demo Application</Typography>
+          </Grid>
+          <Grid item>
+            <ProductTable products={this.state.products}></ProductTable>
+          </Grid>
+          <Grid item>
+            <ProductAdder saveCallback = { this.productAddCallback }></ProductAdder>
+          </Grid>
+        </Grid>
       </div>
     );
   }
