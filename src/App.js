@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
+import Grid from '@material-ui/core/Grid';
+import Typography from "@material-ui/core/Typography";
+
 import ProductTable from './js/components/ProductTable';
+import ProductAdder from './js/components/ProductAdder';
 
 import './App.css';
-import ProductAdder from './js/components/ProductAdder';
-import { Grid, Typography } from '@material-ui/core';
 
 class App extends Component {
 

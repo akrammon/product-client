@@ -2,8 +2,18 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Button from "@material-ui/core/Button";
 import TextField from '@material-ui/core/TextField';
+import { styled } from '@material-ui/core/styles';
+
+const CustomTextField = styled(TextField)({
+   marginLeft: 4,
+   marginRight: 4,
+   width: '25ch',
+   margin: 8
+});
 
 class ProductAdder extends Component {
+
+    
 
     constructor(props) {
         super(props);
@@ -26,29 +36,27 @@ class ProductAdder extends Component {
             )
         } else {
             return(
-                <Grid container direction="column">
-                    <Grid container direction="row">
-                        <Grid item>
-                            <TextField id="productCode" size="small" label="Product Code" variant="outlined" onChange={ this.onProductCodeFieldChangeHandler }></TextField>
+                <Grid container direction="column" justify="center" alignItems="center" spacing={3}>
+                        <Grid item xs={3}>
+                            <CustomTextField required id="productCode" label="Product Code" variant="outlined" onChange={ this.onProductCodeFieldChangeHandler }/>
                         </Grid>
-                        <Grid item>
-                            <TextField id="category" size="small" label="Category" variant="outlined" onChange={ this.onCategoryFieldChangeHandler }></TextField>
+                        <Grid item xs={3}>
+                            <CustomTextField required id="category" label="Category" variant="outlined" onChange={ this.onCategoryFieldChangeHandler } />
                         </Grid>
-                        <Grid item>
-                            <TextField id="name" size="small" label="Name" variant="outlined" onChange={ this.onNameFieldChangeHandler }></TextField>
+                        <Grid item xs={3}>
+                            <CustomTextField id="name" label="Name" variant="outlined" onChange={ this.onNameFieldChangeHandler } />
                         </Grid>
-                        <Grid item>
-                            <TextField id="price" size="small" label="Price" variant="outlined" onChange={ this.onPriceFieldChangeHandler }></TextField>
+                        <Grid item xs={3}>
+                            <CustomTextField id="price" label="Price" variant="outlined" type="number" InputLabelProps={{shrink: true}} onChange={ this.onPriceFieldChangeHandler } />
                         </Grid>
-                        <Grid item>
-                            <TextField id="description" size="small" label="description" variant="outlined" onChange={ this.onDescriptionFieldChangeHandler }></TextField>
+                        <Grid item xs={12}>
+                            <CustomTextField id="description" multiline label="Description" variant="outlined" onChange={ this.onDescriptionFieldChangeHandler } />
                         </Grid>
-                    </Grid>
-                    <Grid container direction="row">
-                        <Grid item>
+                    <Grid container xs={6} justify="center" alignItems="center" direction="row">
+                        <Grid item xs={3}>
                             <Button variant='contained' color='primary' onClick={ this.onClickSaveHandler }> Save </Button>
                         </Grid>    
-                        <Grid item>
+                        <Grid item xs={3}>
                             <Button variant='contained' color='secondary' onClick={ this.onClickCancelHandler }>Cancel</Button>
                         </Grid>
                     </Grid>  
